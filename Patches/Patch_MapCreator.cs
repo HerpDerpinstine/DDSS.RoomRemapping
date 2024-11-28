@@ -54,7 +54,13 @@ namespace DDSS_RoomRemapping.Patches
             {
                 // Check if Name should be shown
                 if (__0.showInMap)
-                    component3.text = __0.roomName;
+                {
+                    if ((LocalizationManager.instance != null)
+                        && !LocalizationManager.instance.WasCollected)
+                        component3.text = LocalizationManager.instance.GetLocalizedValue(__0.roomName);
+                    else
+                        component3.text = __0.roomName;
+                }
                 else
                     component3.text = "";
             }

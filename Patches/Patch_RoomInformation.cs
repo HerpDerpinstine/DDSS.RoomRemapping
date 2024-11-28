@@ -36,7 +36,11 @@ namespace DDSS_LobbyGuard.Patches
                 return false;
 
             // Apply Room Name
-            __instance.roomName.text = __instance.roomTrigger.currentRoom.roomName;
+            if ((LocalizationManager.instance != null)
+                && !LocalizationManager.instance.WasCollected)
+                __instance.roomName.text = LocalizationManager.instance.GetLocalizedValue(__instance.roomTrigger.currentRoom.roomName);
+            else
+                __instance.roomName.text = __instance.roomTrigger.currentRoom.roomName;
 
             // Prevent Original
             return false;
