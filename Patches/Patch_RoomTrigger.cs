@@ -16,12 +16,16 @@ namespace DDSS_LobbyGuard.Patches
             if ((component != null)
                 && !component.WasCollected)
             {
-                // Set Current Room
-                __instance.currentRoom = component;
+                // Add Room
+                __instance.rooms.Clear();
+                __instance.rooms.Add(component);
 
                 // Add Room Name
-                if (!__instance.roomNames.Contains(component.roomName))
-                    __instance.roomNames.Add(component.roomName);
+                __instance.roomNames.Clear();
+                __instance.roomNames.Add(component.roomName);
+
+                // Set Current Room
+                __instance.currentRoom = component;
             }
 
             // Prevent Original
