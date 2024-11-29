@@ -31,16 +31,15 @@ namespace DDSS_LobbyGuard.Patches
             // Validate Trigger
             if ((__instance.roomTrigger == null)
                 || __instance.roomTrigger.WasCollected
-                || (__instance.roomTrigger.currentRoom == null)
-                || __instance.roomTrigger.currentRoom.WasCollected)
+                || (__instance.roomTrigger.rooms.Count <= 0))
                 return false;
 
             // Apply Room Name
             if ((LocalizationManager.instance != null)
                 && !LocalizationManager.instance.WasCollected)
-                __instance.roomName.text = LocalizationManager.instance.GetLocalizedValue(__instance.roomTrigger.currentRoom.roomName);
+                __instance.roomName.text = LocalizationManager.instance.GetLocalizedValue(__instance.roomTrigger.rooms[(__instance.roomTrigger.rooms.Count - 1)].roomName);
             else
-                __instance.roomName.text = __instance.roomTrigger.currentRoom.roomName;
+                __instance.roomName.text = __instance.roomTrigger.rooms[(__instance.roomTrigger.rooms.Count - 1)].roomName;
 
             // Prevent Original
             return false;

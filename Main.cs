@@ -12,7 +12,7 @@ namespace DDSS_RoomRemapping
         public override void OnInitializeMelon()
         {
             _logger = LoggerInstance;
-
+            
             ApplyPatches();
             MakeModHelperAware();
 
